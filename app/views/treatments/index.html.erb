@@ -1,0 +1,10 @@
+<% provide(:title, 'All Medical Treatments') %>
+<h1>All Medical Treatments</h1>
+
+<%= will_paginate %>
+
+<ul class="treatments">
+  <%= render @treatments %>
+</ul>
+
+<%= will_paginate %>
