@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # Users can only access this site if they're logged in.
   before_action :authenticate_user!
   # Make sure the user is actually logged in
-  check_authorization
+  check_authorization :unless => :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   get 'homepage/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :cats
+  resources :cats, :only => [:index, :new, :edit, :create, :update, :destroy]
 
   # replace devise_for :users with:
   devise_for :users,  :controllers => { :registrations => "users/registrations" }

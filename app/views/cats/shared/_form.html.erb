@@ -1,0 +1,82 @@
+<%= form_for @cat, html: { multipart: true } do |f| %>
+  <% if @cat.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@cat.errors.count, "error") %> prohibited
+        this cat from being saved:
+      </h2>
+      <ul>
+        <% @cat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <%= f.label :sex %><br>
+    <%= f.select :sex, [['- Unknown -', ''],
+      ['Male', 'M'], ['Female', 'F'], ['Neutered', 'N'], ['Spayed', 'S']] %>
+  </div>
+
+  <div>
+    <%= f.label :curr_foster %><br>
+    <%= f.text_field :curr_foster %>
+    <div class="results" id="curr_foster-search-results"></div>
+  </div>
+
+  <div>
+    <%= f.label :contact %><br>
+    <%= f.text_field :contact %>
+    <div class="results" id="contact-search-results"></div>
+  </div>
+
+  <div>
+    <%= f.label :availability %><br>
+    <%= f.select(:availability, [['- None -', '']]) %>
+  </div>
+
+  <div>
+    <%= f.label :date_fostered %><br>
+    <%= f.date_select :date_fostered, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' } %>
+  </div>
+
+  <div>
+    <%= f.label :birthdate %><br>
+    <%= f.date_select :birthdate, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' } %>
+  </div>
+
+  <div>
+    <%= f.label :date_adopted %><br>
+    <%= f.date_select :date_adopted, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' } %>
+  </div>
+
+  <p>
+    <%= f.label :paper_location %><br>
+    <%= f.select(:paper_location, [['- None -', '']]) %>
+  </p>
+
+  <p>
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </p>
+
+  <p>
+    <%= f.label :rescue_id %><br>
+    <%= f.text_field :rescue_id %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
